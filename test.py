@@ -1,7 +1,11 @@
 import psycopg2
+from dotenv import find_dotenv, load_dotenv
+import os
+
+load_dotenv(find_dotenv())
 
 # channel_binding 파라미터 제거한 URL 사용
-DATABASE_URL = 'postgresql://neondb_owner:npg_OdMDaK6eXCs5@ep-dawn-thunder-a7sh1upy-pooler.ap-southeast-2.aws.neon.tech/neondb?sslmode=require'
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 try:
     conn = psycopg2.connect(DATABASE_URL)
